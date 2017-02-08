@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <!--An error occurred but we don't know why-->
+  <string name="error_unknown">알 수 없는 오류가 발생했습니다. 다시 시도해 보세요.</string>
+  <!--Network error messages-->
+  <!--Error shown when  user attempts an action but needs an internet connection-->
+  <string name="network_not_connected">인터넷에 연결되어 있지 않습니다.</string>
+  <!--Concise error shown when user attempts an action but needs an internet connection-->
+  <string name="network_not_connected_short">네트워크를 찾을 수 없습니다.</string>
+  <!--Alert dialog title shown when a network request fails-->
+  <string name="reset_no_network_title">연결 오류</string>
+  <!--Alert dialog content shown when a network request fails because the user has no internet connection-->
+  <string name="reset_no_network_message">인터넷에 연결되어 있지 않습니다. 인터넷 연결을 확인하세요</string>
+  <!--An error ocurred due to some kind of network failure-->
+  <string name="network_connected_error">연결 중에 오류가 발생했습니다. 인터넷 연결 상태를 확인해보세요.</string>
+  <!--Title of prompt indicating issue loading a video-->
+  <string name="network_error_header">비디오 가져오는데 문제가 있습니다.</string>
+  <!--Content of prompt indicating issue loading a video-->
+  <string name="network_error_message">인터넷 연결을 확인하세요</string>
+  <!--The server we are trying to use is not available right now-->
+  <string name="network_service_unavailable">현재 사용할 수 없습니다. 다시 시도해 보세요.</string>
+  <!--Login error messages-->
+  <!--Error shown during login when user attempts login without entering a username or e-mail-->
+  <string name="error_enter_email">사용자 이름과 이메일 주소를 입력하고 다시 시도해 보십시요.</string>
+  <!--Error shown during login when user enters an invalid email address-->
+  <string name="error_invalid_email">이메일 주소가 잘 입력되었는지 확인하고 다시 시도 하십시요.</string>
+  <!--Error shown during login when user attempts login without entering a password-->
+  <string name="error_enter_password">암호를 입력하고 다시 시도하십시요.</string>
+  <!--Title of alert shown during login when user attempts login via Facebook without having linked their account-->
+  <string name="error_account_not_linked_title_fb">페이스북 계정이 {platform_name}  계정과 연동되어 있지 않습니다</string>
+  <!--Content of alert shown during login when user attempts login via Facebook without having linked their account-->
+  <string name="error_account_not_linked_desc_fb">페이스북 계정이 {platform_destination} 에서 {platform_name} 계정과 연동되어 있는지 확인하세요</string>
+  <!--Title of alert shown during login when user attempts login via Google without having linked their account-->
+  <string name="error_account_not_linked_title_google">구글 계정이 {platform_name} 계정과 연동되어 있지 않습니다</string>
+  <!--Content of alert shown during login when user attempts login via Google without having linked their account-->
+  <string name="error_account_not_linked_desc_google">구글 계정이 {platform_destination} 에서 {platform_name} 계정과 연동되어 있는지 확인하세요</string>
+  <!--Download error messages-->
+  <!--Label shown on video list item whose download failed-->
+  <string name="error_download_failed">다운로드 실패</string>
+  <!--Confirmation message shown when attempting to download a large quantity of video data-->
+  <string name="file_size_exceeded">다운로드 파일의 크기가 남아있는 기기 저장 공간을 초과합니다.</string>
+  <!--Confirmation message shown when attempting to download a large quantity of video data-->
+  <string name="download_exceed_message">선택한 동영상이 1GB를 넘습니다.
+다운로드 받겠습니까?</string>
+  <!--Message shown when user attempts to download a video over cellular data,
+    but has chosen to only allow video downloads over wifi-->
+  <string name="wifi_off_message">현재 다운로드 설정이 Wi-Fi 로 다운로드만 허용합니다. Wi-Fi 네트워크에 연결하거나 다운로드 설정을 변경하십시요.</string>
+  <!--Offline Access-->
+  <!--Label shown when user attempts to view a course section that hasn't been synced-->
+  <string name="section_offline_header">이 섹션은 오프라인 모드에서는 사용할 수 없습니다.</string>
+  <!--Label shown when user attempts to view a course section that hasn't been synced-->
+  <string name="section_offline_message">다른 주제의 콘텐츠를 다운로드 받았습니다.
+해당 주제로 이동해 콘텐츠를 조회하세요</string>
+  <!--Alert dialog title shown when user attempts to view a video that hasn't been synced-->
+  <string name="video_offline_header">이 비디오는 오프라인에서 사용할 수 없습니다.</string>
+  <!--Alert dialog content shown when user attempts to view a video that hasn't been synced-->
+  <string name="video_offline_message">사용중인 장치에 추가할 동영상을 선택하세요.</string>
+  <!--New version available-->
+  <!--Snackbar notification shown when the current version of the app is unsupported-->
+  <string name="app_version_unsupported">앱의 현재 버전은 더이상 지원되지 않습니다.</string>
+  <!--Snackbar notification shown when the current version of the app is deprecated-->
+  <!--Snackbar notification shown when the current version of the app is outdated-->
+  <string name="app_version_outdated">앱의 새 버전이 출시되었습니다.</string>
+  <!--Snackbar action button label for opening an app store to upgrade the app to the latest version-->
+  <string name="app_version_update_button">업데이트</string>
+  <!--Toast notification for when the user presses the update action button from the Snackbar
+         notifications while no supported app store or browser is installed on the device with which
+         the app could be updated-->
+  <string name="app_version_upgrade_app_store_unavailable">현재 장치에 지원되는 앱스토어가 존재하지 않습니다.</string>
+  <!--Registration Error Messages-->
+  <!--Error prompt shown during registration to indicate an empty field. Argument is a field name-->
+  <string name="error_enter_field"> %1$s 를 입력하십시요.</string>
+  <!--Error prompt shown during registration to indicate a field missing a selection. Argument is a field name-->
+  <string name="error_select_field"> %1$s 를 선택하십시요.</string>
+  <!--Error prompt shown during registration when a field entry is too short. Arguments are 1) a field name, 2) a number-->
+  <string name="error_min_length"> %1$s 는 최소 %2$d 개 문자로 되어 있어야 합니다</string>
+  <!--Error prompt shown during registration when a field entry is too long. Arguments are 1) a field name, 2) a number-->
+  <string name="error_max_length">%1$s 는  %2$d 개 이상 문자를 가질 수 없습니다</string>
+  <!--Error message shown when a course hasn't started yet-->
+  <string name="course_not_started">아직 강좌가 시작되지 않았습니다.</string>
+  <!--Error message shown when a user can't perform an action on e.g. add a post/response/comment in forums-->
+  <string name="action_not_completed">요청하신 작업을 수행할 수 없었습니다.</string>
+</resources>

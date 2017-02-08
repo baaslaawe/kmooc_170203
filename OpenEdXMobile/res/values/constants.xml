@@ -1,0 +1,12 @@
+<resources>
+    <string name="eula_file_link">http://www.kmooc.kr/agreement</string>
+    <string name="course_not_listed_file_name">file:///android_asset/COURSE_NOT_LISTED.htm</string>
+    <string name="eula_file_link2">http://www.kmooc.kr/Privacy-Policy</string>
+
+    <!-- Speed Test.
+    Once this feature is ready, migrate this to the YAML config -->
+    <integer name="speed_test_timeout_in_milliseconds">5000</integer>
+    <integer name="threshold_kbps_for_video">9</integer>
+    <integer name="delay_speed_test_in_milliseconds">10000</integer>
+    <string name="speed_test_url">http://bnotions.s3.amazonaws.com/128kb.file</string>
+</resources>

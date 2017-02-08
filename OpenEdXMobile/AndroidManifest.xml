@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nile.kmooc"
+    android:installLocation="auto">
+
+    <!-- Required by app for server communication and video download -->
+    <!-- Required by Segment -->
+    <!-- Required by NewRelic -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Required by NewRelic -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Required by app for preventing screen lock while playing a video -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Required by app for performing downloads without showing download notification -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+
+    <!-- Required by app for storing downloaded videos to the external storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Required by legacy Google Sign In (TODO: Switch to new Google Sign In) -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <!-- Required by app for TelephonyManager to determine mobile network carrier ID -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Sticky broadcast passing a message from one screen and display on another -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <application
+        android:name="com.nile.kmooc.base.RuntimeApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="${supportsRtl}"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.nile.kmooc.view.SplashActivity"
+            android:label="@string/app_shortcut_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.LaunchActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Launch" />
+
+        <activity
+            android:name="com.nile.kmooc.view.DiscoveryLaunchActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Launch" />
+
+        <activity
+            android:name="com.nile.kmooc.view.LoginActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.dialog.ResetPasswordActivity"
+            android:label="@string/reset_dialog_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog.NoTitle" />
+
+        <activity
+            android:name="com.nile.kmooc.view.dialog.ResetPasswordSuccessActivity"
+            android:label="@string/success_dialog_title_help"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog.NoTitle" />
+
+        <activity
+            android:name="com.nile.kmooc.view.MyCoursesListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDashboardActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.nile.kmooc.view.CourseOutlineActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDiscussionTopicsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDiscussionPostsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/discussion_title"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDiscussionCommentsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDiscussionResponsesActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.DiscussionAddPostActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/discussion_post_create_new_post"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.DiscussionAddResponseActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/discussion_add_response_title"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.DiscussionAddCommentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/discussion_add_comment_title"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseUnitNavigationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="user"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+
+        <activity
+            android:name="com.nile.kmooc.view.my_videos.MyVideosActivity"
+            android:label="@string/label_my_videos"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.DownloadListActivity"
+            android:label="@string/title_download"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.WebViewFindCoursesActivity"
+            android:label="@string/find_courses_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.WebViewExploreSubjectsActivity"
+            android:label="@string/launch_explore_subjects"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.NativeFindCoursesActivity"
+            android:label="@string/find_courses_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseInfoActivity"
+            android:label="@string/find_courses_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseDetailActivity"
+            android:label="@string/find_courses_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity
+            android:name="com.nile.kmooc.view.VideoListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseHandoutActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CourseAnnouncementsActivity"
+            android:label="@string/announcement_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.nile.kmooc.view.CertificateActivity"
+            android:label="@string/tab_label_certificate"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"/>
+
+        <activity
+            android:name="com.nile.kmooc.view.SettingsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.RegisterActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.nile.kmooc.profiles.UserProfileActivity"
+            android:label="@string/profile_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.EditUserProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.FormFieldActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"/>
+
+        <activity
+            android:name="com.nile.kmooc.view.CropImageActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.nile.kmooc.view.dialog.WebViewDialogActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name="com.nile.kmooc.module.download.DownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Setup for Code Coverage -->
+        <instrumentation
+            android:name="com.nile.kmooc.instrumentation.EdxInstrumentation"
+            android:targetPackage="com.nile.kmooc"></instrumentation>
+
+        <!-- adb shell am broadcast -a com.nile.kmooc.END_EMMA -->
+        <receiver android:name="com.nile.kmooc.instrumentation.EndEmmaBroadcast">
+            <intent-filter>
+                <action android:name="com.nile.kmooc.END_EMMA" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Setup Google -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Setup Facebook -->
+        <activity android:name="com.facebook.LoginActivity" />
+
+        <service android:name="com.nile.kmooc.services.DownloadSpeedService" />
+    </application>
+
+</manifest>

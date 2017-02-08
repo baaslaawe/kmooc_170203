@@ -1,0 +1,509 @@
+package com.nile.kmooc.view.adapters;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
+import android.support.v4.widget.TextViewCompat;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.inject.Inject;
+import com.joanzapata.iconify.Icon;
+import com.joanzapata.iconify.IconDrawable;
+import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.nile.kmooc.discussion.DiscussionComment;
+import com.nile.kmooc.http.CallTrigger;
+import com.nile.kmooc.view.common.TaskProgressCallback;
+
+import com.nile.kmooc.discussion.DiscussionService;
+import com.nile.kmooc.discussion.DiscussionService.FlagBody;
+import com.nile.kmooc.discussion.DiscussionService.FollowBody;
+import com.nile.kmooc.discussion.DiscussionService.VoteBody;
+import com.nile.kmooc.discussion.DiscussionTextUtils;
+import com.nile.kmooc.discussion.DiscussionThread;
+import com.nile.kmooc.discussion.DiscussionThreadUpdatedEvent;
+import com.nile.kmooc.http.ErrorHandlingCallback;
+import com.nile.kmooc.util.Config;
+import com.nile.kmooc.util.ResourceUtil;
+import com.nile.kmooc.util.UiUtil;
+import com.nile.kmooc.view.view_holders.AuthorLayoutViewHolder;
+import com.nile.kmooc.view.view_holders.DiscussionSocialLayoutViewHolder;
+import com.nile.kmooc.view.view_holders.NumberResponsesViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+import de.greenrobot.event.EventBus;
+import roboguice.RoboGuice;
+
+public class CourseDiscussionResponsesAdapter extends RecyclerView.Adapter implements InfiniteScrollUtils.ListContentController<DiscussionComment> {
+
+    public interface Listener {
+        void onClickAuthor(@NonNull String username);
+
+        void onClickAddComment(@NonNull DiscussionComment comment);
+
+        void onClickViewComments(@NonNull DiscussionComment comment);
+    }
+
+    @Inject
+    private Config config;
+
+    @Inject
+    private DiscussionService discussionService;
+
+    @NonNull
+    private final Context context;
+
+    @NonNull
+    private final Listener listener;
+
+    @NonNull
+    private DiscussionThread discussionThread;
+
+    private final List<DiscussionComment> discussionResponses = new ArrayList<>();
+
+    private boolean progressVisible = false;
+    // Record the current time at initialization to keep the display of the elapsed time durations stable.
+    private long initialTimeStampMs = System.currentTimeMillis();
+
+    static class RowType {
+        static final int THREAD = 0;
+        static final int RESPONSE = 1;
+        static final int PROGRESS = 2;
+    }
+
+    public CourseDiscussionResponsesAdapter(@NonNull Context context, @NonNull Listener listener, @NonNull DiscussionThread discussionThread) {
+        this.context = context;
+        this.discussionThread = discussionThread;
+        this.listener = listener;
+        RoboGuice.getInjector(context).injectMembers(this);
+    }
+
+    @Override
+    public void setProgressVisible(boolean visible) {
+        if (progressVisible != visible) {
+            progressVisible = visible;
+            int progressRowIndex = 1 + discussionResponses.size();
+            if (visible) {
+                notifyItemInserted(progressRowIndex);
+            } else {
+                notifyItemRemoved(progressRowIndex);
+            }
+        }
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == RowType.THREAD) {
+            View discussionThreadRow = LayoutInflater.
+                    from(parent.getContext()).
+                    inflate(com.nile.kmooc.R.layout.row_discussion_responses_thread, parent, false);
+
+            return new DiscussionThreadViewHolder(discussionThreadRow);
+        }
+        if (viewType == RowType.PROGRESS) {
+            return new LoadingViewHolder(parent);
+        }
+
+        View discussionResponseRow = LayoutInflater.
+                from(parent.getContext()).
+                inflate(com.nile.kmooc.R.layout.row_discussion_responses_response, parent, false);
+        // CardView adds extra padding on pre-lollipop devices for shadows
+        // Since, we've set cardUseCompatPadding to true in the layout file
+        // so we need to deduct the extra padding from margins in any case to get the desired results
+        UiUtil.adjustCardViewMargins(discussionResponseRow);
+
+        return new DiscussionResponseViewHolder(discussionResponseRow);
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        int rowType = getItemViewType(position);
+        switch (rowType) {
+            case RowType.THREAD:
+                bindViewHolderToThreadRow((DiscussionThreadViewHolder) holder);
+                break;
+            case RowType.RESPONSE:
+                bindViewHolderToResponseRow((DiscussionResponseViewHolder) holder, position);
+                break;
+            case RowType.PROGRESS:
+                bindViewHolderToShowMoreRow((LoadingViewHolder) holder);
+                break;
+        }
+
+    }
+
+    private void bindViewHolderToThreadRow(DiscussionThreadViewHolder holder) {
+        holder.authorLayoutViewHolder.populateViewHolder(config, discussionThread,
+                discussionThread, initialTimeStampMs,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.onClickAuthor(discussionThread.getAuthor());
+                    }
+                });
+
+        holder.threadTitleTextView.setText(discussionThread.getTitle());
+
+        DiscussionTextUtils.renderHtml(holder.threadBodyTextView, discussionThread.getRenderedBody());
+
+        String groupName = discussionThread.getGroupName();
+        if (groupName == null) {
+            holder.threadVisibilityTextView.setText(com.nile.kmooc.R.string.discussion_post_visibility_everyone);
+        } else {
+            holder.threadVisibilityTextView.setText(ResourceUtil.getFormattedString(
+                    context.getResources(), com.nile.kmooc.R.string.discussion_post_visibility_cohort,
+                    "cohort", groupName));
+        }
+
+        bindSocialView(holder.socialLayoutViewHolder, discussionThread);
+
+        bindNumberResponsesView(holder.numberResponsesViewHolder);
+
+        holder.discussionReportViewHolder.reportLayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                discussionService.setThreadFlagged(discussionThread.getIdentifier(),
+                        new FlagBody(!discussionThread.isAbuseFlagged()))
+                        .enqueue(new ErrorHandlingCallback<DiscussionThread>(
+                                context,
+                                CallTrigger.USER_ACTION,
+                                (TaskProgressCallback) null) {
+                            @Override
+                            protected void onResponse(@NonNull final DiscussionThread topicThread) {
+                                discussionThread = discussionThread.patchObject(topicThread);
+                                notifyItemChanged(0);
+                                EventBus.getDefault().post(new DiscussionThreadUpdatedEvent(discussionThread));
+                            }
+                        });
+            }
+        });
+
+        holder.discussionReportViewHolder.setReported(discussionThread.isAbuseFlagged());
+    }
+
+    private void bindSocialView(DiscussionSocialLayoutViewHolder holder, DiscussionThread thread) {
+        holder.setDiscussionThread(thread);
+
+        holder.voteViewContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                discussionService.setThreadVoted(discussionThread.getIdentifier(),
+                        new VoteBody(!discussionThread.isVoted()))
+                        .enqueue(new ErrorHandlingCallback<DiscussionThread>(
+                                context,
+                                CallTrigger.USER_ACTION,
+                                (TaskProgressCallback) null) {
+                            @Override
+                            protected void onResponse(@NonNull final DiscussionThread updatedDiscussionThread) {
+                                discussionThread = discussionThread.patchObject(updatedDiscussionThread);
+                                notifyItemChanged(0);
+                                EventBus.getDefault().post(new DiscussionThreadUpdatedEvent(discussionThread));
+                            }
+                        });
+            }
+        });
+
+        holder.threadFollowContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                discussionService.setThreadFollowed(discussionThread.getIdentifier(),
+                        new FollowBody(!discussionThread.isFollowing()))
+                        .enqueue(new ErrorHandlingCallback<DiscussionThread>(
+                                context,
+                                CallTrigger.USER_ACTION,
+                                (TaskProgressCallback) null) {
+                            @Override
+                            protected void onResponse(@NonNull final DiscussionThread updatedDiscussionThread) {
+                                discussionThread = discussionThread.patchObject(updatedDiscussionThread);
+                                notifyItemChanged(0);
+                                EventBus.getDefault().post(new DiscussionThreadUpdatedEvent(discussionThread));
+                            }
+                        });
+            }
+        });
+    }
+
+    private void bindNumberResponsesView(NumberResponsesViewHolder holder) {
+        int responsesCount = discussionThread.getResponseCount();
+        if (responsesCount < 0) {
+            // The responses count is not available yet, so hide the view.
+            holder.numberResponsesOrCommentsLabel.setVisibility(View.GONE);
+        } else {
+            holder.numberResponsesOrCommentsLabel.setVisibility(View.VISIBLE);
+            holder.numberResponsesOrCommentsLabel.setText(holder.numberResponsesOrCommentsLabel.getResources().getQuantityString(
+                    com.nile.kmooc.R.plurals.number_responses_or_comments_responses_label, responsesCount, responsesCount));
+        }
+    }
+
+    private void bindViewHolderToShowMoreRow(LoadingViewHolder holder) {
+    }
+
+
+    private void bindViewHolderToResponseRow(DiscussionResponseViewHolder holder, final int position) {
+        final DiscussionComment comment = discussionResponses.get(position - 1); // Subtract 1 for the discussion thread row at position 0
+
+        holder.authorLayoutViewHolder.populateViewHolder(config, comment,
+                comment, initialTimeStampMs,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.onClickAuthor(comment.getAuthor());
+                    }
+                });
+
+        if (comment.isEndorsed()) {
+            holder.authorLayoutViewHolder.answerTextView.setVisibility(View.VISIBLE);
+            holder.responseAnswerAuthorTextView.setVisibility(View.VISIBLE);
+            DiscussionThread.ThreadType threadType = discussionThread.getType();
+            DiscussionTextUtils.AuthorAttributionLabel authorAttributionLabel;
+            @StringRes int endorsementTypeStringRes;
+            switch (threadType) {
+                case QUESTION:
+                    authorAttributionLabel = DiscussionTextUtils.AuthorAttributionLabel.ANSWER;
+                    endorsementTypeStringRes = com.nile.kmooc.R.string.discussion_responses_answer;
+                    break;
+                case DISCUSSION:
+                default:
+                    authorAttributionLabel = DiscussionTextUtils.AuthorAttributionLabel.ENDORSEMENT;
+                    endorsementTypeStringRes = com.nile.kmooc.R.string.discussion_responses_endorsed;
+                    break;
+            }
+            holder.authorLayoutViewHolder.answerTextView.setText(endorsementTypeStringRes);
+            DiscussionTextUtils.setAuthorAttributionText(holder.responseAnswerAuthorTextView,
+                    authorAttributionLabel, comment.getEndorserData(), initialTimeStampMs,
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onClickAuthor(comment.getEndorsedBy());
+                        }
+                    });
+        } else {
+            holder.authorLayoutViewHolder.answerTextView.setVisibility(View.GONE);
+            holder.responseAnswerAuthorTextView.setVisibility(View.GONE);
+        }
+
+        DiscussionTextUtils.renderHtml(holder.responseCommentBodyTextView, comment.getRenderedBody());
+
+        if (discussionThread.isClosed() && comment.getChildCount() == 0) {
+            holder.addCommentLayout.setEnabled(false);
+        } else {
+            holder.addCommentLayout.setEnabled(true);
+            holder.addCommentLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (comment.getChildCount() > 0) {
+                        listener.onClickViewComments(comment);
+                    } else {
+                        listener.onClickAddComment(comment);
+                    }
+                }
+            });
+        }
+
+        bindNumberCommentsView(holder.numberResponsesViewHolder, comment);
+        bindSocialView(holder.socialLayoutViewHolder, position, comment);
+
+        holder.discussionReportViewHolder.reportLayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                discussionService.setCommentFlagged(comment.getIdentifier(),
+                        new FlagBody(!comment.isAbuseFlagged()))
+                        .enqueue(new ErrorHandlingCallback<DiscussionComment>(
+                                context,
+                                CallTrigger.USER_ACTION,
+                                (TaskProgressCallback) null) {
+                            @Override
+                            protected void onResponse(@NonNull final DiscussionComment comment) {
+                                discussionResponses.get(position - 1).patchObject(comment);
+                                discussionResponses.set(position - 1, comment);
+                                notifyItemChanged(position);
+                            }
+                        });
+            }
+        });
+
+        holder.discussionReportViewHolder.setReported(comment.isAbuseFlagged());
+
+        holder.socialLayoutViewHolder.threadFollowContainer.setVisibility(View.INVISIBLE);
+    }
+
+    private void bindSocialView(DiscussionSocialLayoutViewHolder holder, final int position, final DiscussionComment response) {
+        holder.setDiscussionResponse(response);
+
+        holder.voteViewContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                discussionService.setCommentVoted(response.getIdentifier(),
+                        new VoteBody(!response.isVoted()))
+                        .enqueue(new ErrorHandlingCallback<DiscussionComment>(
+                                context,
+                                CallTrigger.USER_ACTION,
+                                (TaskProgressCallback) null) {
+                            @Override
+                            protected void onResponse(@NonNull final DiscussionComment comment) {
+                                discussionResponses.get(position - 1).patchObject(comment);
+                                discussionResponses.set(position - 1, comment);
+                                notifyItemChanged(position);
+                            }
+                        });
+            }
+        });
+    }
+
+    private void bindNumberCommentsView(NumberResponsesViewHolder holder, DiscussionComment response) {
+        String text;
+        Icon icon;
+
+        int numChildren = response == null ? 0 : response.getChildCount();
+
+        if (response.getChildCount() == 0) {
+            if (discussionThread.isClosed()) {
+                text = context.getString(com.nile.kmooc.R.string.discussion_add_comment_disabled_title);
+                icon = FontAwesomeIcons.fa_lock;
+            } else {
+                text = context.getString(com.nile.kmooc.R.string.number_responses_or_comments_add_comment_label);
+                icon = FontAwesomeIcons.fa_comment;
+            }
+        } else {
+            text = context.getResources().getQuantityString(
+                    com.nile.kmooc.R.plurals.number_responses_or_comments_comments_label, numChildren, numChildren);
+            icon = FontAwesomeIcons.fa_comment;
+        }
+
+        holder.numberResponsesOrCommentsLabel.setText(text);
+        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                holder.numberResponsesOrCommentsLabel,
+                new IconDrawable(context, icon)
+                        .colorRes(context, com.nile.kmooc.R.color.edx_brand_gray_base)
+                        .sizeRes(context, com.nile.kmooc.R.dimen.edx_small),
+                null, null, null);
+    }
+
+    @Override
+    public int getItemCount() {
+        int total = 1 + discussionResponses.size();
+        if (progressVisible)
+            total++;
+        return total;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return RowType.THREAD;
+        }
+
+        if (progressVisible && position == getItemCount() - 1) {
+            return RowType.PROGRESS;
+        }
+
+        return RowType.RESPONSE;
+    }
+
+    public void updateDiscussionThread(@NonNull DiscussionThread discussionThread) {
+        this.discussionThread = discussionThread;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void clear() {
+        int responsesCount = discussionResponses.size();
+        discussionResponses.clear();
+        notifyItemRangeRemoved(1, responsesCount);
+    }
+
+    @Override
+    public void addAll(List<DiscussionComment> items) {
+        int offset = 1 + discussionResponses.size();
+        discussionResponses.addAll(items);
+        notifyItemRangeInserted(offset, items.size());
+    }
+
+    public void addNewResponse(@NonNull DiscussionComment response) {
+        // Since, we have a added a new response we need to update timestamps of all responses
+        initialTimeStampMs = System.currentTimeMillis();
+        int offset = 1 + discussionResponses.size();
+        discussionResponses.add(response);
+        incrementResponseCount();
+        notifyItemInserted(offset);
+    }
+
+    public void incrementResponseCount() {
+        discussionThread.incrementResponseCount();
+        notifyItemChanged(0); // Response count is shown in the thread details header, so it also needs to be refreshed.
+    }
+
+    public void addNewComment(@NonNull DiscussionComment parent) {
+        // Since, we have a added a new comment we need to update timestamps of all responses as well
+        initialTimeStampMs = System.currentTimeMillis();
+        discussionThread.incrementCommentCount();
+        String parentId = parent.getIdentifier();
+        for (ListIterator<DiscussionComment> responseIterator = discussionResponses.listIterator();
+             responseIterator.hasNext(); ) {
+            DiscussionComment response = responseIterator.next();
+            if (parentId.equals(response.getIdentifier())) {
+                response.incrementChildCount();
+                notifyItemChanged(1 + responseIterator.previousIndex());
+                break;
+            }
+        }
+    }
+
+    public static class DiscussionThreadViewHolder extends RecyclerView.ViewHolder {
+        TextView threadTitleTextView;
+        TextView threadBodyTextView;
+        TextView threadVisibilityTextView;
+
+        AuthorLayoutViewHolder authorLayoutViewHolder;
+        NumberResponsesViewHolder numberResponsesViewHolder;
+        DiscussionSocialLayoutViewHolder socialLayoutViewHolder;
+        DiscussionReportViewHolder discussionReportViewHolder;
+
+        public DiscussionThreadViewHolder(View itemView) {
+            super(itemView);
+
+            threadTitleTextView = (TextView) itemView.
+                    findViewById(com.nile.kmooc.R.id.discussion_responses_thread_row_title_text_view);
+            threadBodyTextView = (TextView) itemView.
+                    findViewById(com.nile.kmooc.R.id.discussion_responses_thread_row_body_text_view);
+            threadVisibilityTextView = (TextView) itemView.
+                    findViewById(com.nile.kmooc.R.id.discussion_responses_thread_row_visibility_text_view);
+
+            authorLayoutViewHolder = new AuthorLayoutViewHolder(itemView.findViewById(com.nile.kmooc.R.id.discussion_user_profile_row));
+            numberResponsesViewHolder = new NumberResponsesViewHolder(itemView);
+            socialLayoutViewHolder = new DiscussionSocialLayoutViewHolder(itemView);
+            discussionReportViewHolder = new DiscussionReportViewHolder(itemView);
+        }
+    }
+
+    public static class DiscussionResponseViewHolder extends RecyclerView.ViewHolder {
+        RelativeLayout addCommentLayout;
+        TextView responseCommentBodyTextView;
+        TextView responseAnswerAuthorTextView;
+
+        AuthorLayoutViewHolder authorLayoutViewHolder;
+        NumberResponsesViewHolder numberResponsesViewHolder;
+        DiscussionSocialLayoutViewHolder socialLayoutViewHolder;
+        DiscussionReportViewHolder discussionReportViewHolder;
+
+        public DiscussionResponseViewHolder(View itemView) {
+            super(itemView);
+
+            addCommentLayout = (RelativeLayout) itemView.findViewById(com.nile.kmooc.R.id.discussion_responses_comment_relative_layout);
+            responseCommentBodyTextView = (TextView) itemView.findViewById(com.nile.kmooc.R.id.discussion_responses_comment_body_text_view);
+            responseAnswerAuthorTextView = (TextView) itemView.findViewById(com.nile.kmooc.R.id.discussion_responses_answer_author_text_view);
+            authorLayoutViewHolder = new AuthorLayoutViewHolder(itemView.findViewById(com.nile.kmooc.R.id.discussion_user_profile_row));
+            numberResponsesViewHolder = new NumberResponsesViewHolder(itemView);
+            socialLayoutViewHolder = new DiscussionSocialLayoutViewHolder(itemView);
+            discussionReportViewHolder = new DiscussionReportViewHolder(itemView);
+        }
+    }
+}

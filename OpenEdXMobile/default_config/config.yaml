@@ -1,0 +1,6 @@
+API_HOST_URL: 'http://www.kmooc.kr' # localhost is 10.0.2.2 in Android
+ENVIRONMENT_DISPLAY_NAME: '국가평생교육진흥원(NILE)'
+PLATFORM_NAME: 'K-MOOC'
+PLATFORM_DESTINATION_NAME: 'example.com'
+FEEDBACK_EMAIL_ADDRESS: 'info_kmooc@nile.or.kr'
+#DISCUSSIONS_ENABLED: true

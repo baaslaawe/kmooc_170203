@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <!--Certificates-->
+  <!--Label congratulation user on finishing course-->
+  <string name="course_details_congratulations">축하합니다!</string>
+  <!--Message for user who has successfully completed a certificate course-->
+  <string name="course_details_earned_cert">강좌를 이수하였습니다.</string>
+  <!--Button that opens a full view of an earned certificate-->
+  <string name="course_details_view_cert_button">이수증 보기</string>
+  <!--Course Discovery-->
+  <!--Enroll Now button text-->
+  <string name="enroll_now_button_text">바로 수강신청하기</string>
+  <!--Effort field name-->
+  <string name="effort_field_name">학습 권장 시간:</string>
+  <!--When discovering courses, some courses have an externally hosted video that describes it.
+    In that case, a play icon is shown on top of the course image. This is the content description.-->
+  <string name="go_to_video">동영상 보기</string>
+  <!--View Course button text text-->
+  <string name="view_course_button_text">학습하기</string>
+  <!--Floating overlay text shown to user when they succeed at enrolling in a course-->
+  <string name="you_are_now_enrolled">강좌에 등록되었습니다.</string>
+  <!--Error message shown when dashboard cannot be shown from course detail view-->
+  <string name="cannot_show_dashboard">대시보드를 표시할 수 없습니다.</string>
+  <!--Course Sharing-->
+  <!--Description of button that will open the share course menu-->
+  <string name="share_course_button">강좌 공유하기</string>
+  <!--Share menu title-->
+  <string name="share_course_popup_header">강좌 공유하기:</string>
+  <!--Share course-->
+  <string name="share_course_message">{platform_name}에서 강좌를 듣고 있어요! 방문해 보세요:</string>
+  <!--Settings Page-->
+  <!--Label for wifi only switch-->
+  <string name="settings_wifi_top">3G/LTE 연결 시 동영상 다운로드 허용하기</string>
+  <!--Label explaining what wifi only means in detail-->
+  <string name="settings_wifi_bottom">3G/LTE 연결시에도 동영상 다운로드를 허용합니다.</string>
+  <!--Certificate Page-->
+  <!--Description of button that will open the certificate sharing menu-->
+  <string name="share_certificate_button">이수증을 공유하세요</string>
+  <!--Text that pre-populates your post/email/SMS when sharing certificate-->
+  <string name="share_certificate_message">{platform_name} 에서 방금 이수증을 받았습니다! 확인해보세요: {certificate_url}</string>
+  <!--Tab of tab for certicate for finished course-->
+  <string name="tab_label_certificate">이수증</string>
+  <!--Header for popup list of share targets-->
+  <string name="share_certificate_popup_header">... 을 통해 이수증을 공유하세요</string>
+  <!--Data Usage Dialog-->
+  <!--Alert dialog error message shown when using a feature with a required Internet connection-->
+  <string name="need_data">이 기능을 사용하기 위해선 인터넷 연결이 필요합니다.</string>
+  <!--Login Activity Place Holders-->
+  <!--Hint text for login field-->
+  <string name="email_username">이메일 주소 혹은 아이디</string>
+  <!--Hint text for email address field in reset password dialog-->
+  <string name="email">E-mail 주소</string>
+  <!--Hint text for password field-->
+  <string name="password">비밀번호</string>
+  <!--Button text allowing user to reset their password-->
+  <string name="forgot_password">비밀번호를 찾으십니까?</string>
+  <!--Button initiating login process after user enters credentials like username and password-->
+  <string name="login">로그인</string>
+  <!--Accessible content description of sign in button on Log in screen-->
+  <string name="login_btn">로그인 버튼</string>
+  <!--Message shown while waiting for action-->
+  <string name="progress_text">잠시만 기다리세요</string>
+  <!--Message shown while user waits for response to a sign in request-->
+  <string name="signing_in">로그인하기</string>
+  <!--Message for shown after tapping Sign In-->
+  <string name="error_message">오류 메세지</string>
+  <!--Generic error during log in-->
+  <string name="error_heading">로그인 중에 다음 오류가 발생하였습니다</string>
+  <!--Error during log in.-->
+  <string name="login_failed">이메일 주소/아이디와 비밀번호가 정확한지 확인해주세요. </string>
+  <string name="by_signing_up">이 앱에 로그인 함으로서 다음 약관에 동의하게 됩니다</string>
+  <string name="licensing_agreement">{platform_name} 서비스 이용약관</string>
+  <string name="personal_policy">개인정보처리방침</string>
+  <string name="login_title">로그인</string>
+  <!--Accessible content description of close button on Sign in and Sign up screen-->
+  <string name="close">닫기</string>
+  <!--Accessible content description prefix of dropdowns on Sign up screen, like, country and gender dropdowns-->
+  <string name="dropdown_list_prefix">드롭다운 목록.</string>
+  <!--Navigation Drawer Labels-->
+  <!--The accessibility description for the navigation header-->
+  <string name="navigation_header">{username}, {email} 로 로그인 했습니다</string>
+  <!--Button to open drawer-->
+  <string name="label_open_navigation_menu">탐색 메뉴 열기</string>
+  <!--Button to open drawer-->
+  <string name="label_close_navigation_menu">탐색 메뉴 닫기</string>
+  <!--Button text to show user Settings screen-->
+  <string name="action_settings">설정</string>
+  <!--Content description for edit profile button-->
+  <string name="open_profile_button">프로필 열기</string>
+  <!--Title of user's course list screen-->
+  <string name="label_my_courses">내 강의실</string>
+  <!--Title of user's downloaded videos list screen-->
+  <string name="label_my_videos">다운로드한 강좌 영상</string>
+  <!--Title of Find Courses screen-->
+  <string name="label_find_courses">강좌 목록</string>
+  <!--Button allowing users to send an email for feedback-->
+  <string name="label_submit_feedback">문의하기</string>
+  <!--Toggle switch on state label-->
+  <string name="toggle_turn_on">켜기</string>
+  <!--Toggle switch off state label-->
+  <string name="toggle_turn_off">끄기</string>
+  <!--Logout button label-->
+  <string name="logout">로그아웃</string>
+  <!--Settings screen title-->
+  <string name="settings_txt">설정</string>
+  <!--Settings screen version-->
+  <string name="label_version">ver</string>
+  <!--Button text to show user Settings screen-->
+  <string name="label_settings">설정</string>
+  <!--Help Dialog Place Holder messages-->
+  <!--Reset password alert dialog title-->
+  <string name="confirm_dialog_title_help">비밀번호 초기화</string>
+  <!--Reset password alert dialog message-->
+  <string name="success_dialog_title_help">비밀번호 초기화를 위한 메일이 전송되었습니다</string>
+  <!--Reset password alert dialog title-->
+  <string name="title_reset_password_failed">비밀번호 재설정 오류</string>
+  <!--Label for switch controlling whether users permit downloading using cellular data or only wifi-->
+  <string name="wifi_dialog_title_help">셀룰러 데이터 다운로드 허용</string>
+  <!--Password reset sent succesfully alert-->
+  <string name="success_dialog_message_help">이메일 주소로 비밀번호 재설정 안내를 발송하였습니다.
+몇분 내로 이메일을 확인할 수 없다면 스팸 보관함을 확인해보세요.</string>
+  <!--Password reset dialog prompt-->
+  <string name="confirm_dialog_message_help">계정 이메일 주소를 입력하시면, 비밀번호를 재설정하기위한 안내메일이 발송됩니다.</string>
+  <!--Label explaining toggle for cellular data access-->
+  <string name="wifi_dialog_message_help">셀룰러 연결시 동영상 다운로드를 허용합니다. 데이터 요금이 결제될 수 있으니 주의하십시오.</string>
+  <!--Confirmation text for delete video dialog-->
+  <string name="delete_dialog_title_help">삭제 확인</string>
+  <plurals name="delete_video_dialog_msg">
+    <item quantity="other">이 동영상을 삭제하시겠습니까?</item>
+  </plurals>
+  <!--Alert dialog title for users with zero rated data-->
+  <string name="leaving_app_data_title">{platform_name} 앱을 벗어납니다</string>
+  <!--Alert dialog content for users with zero rated data-->
+  <string name="leaving_app_data_message">앱을 벗어나면 더이상 무료 {platform_name} 콘텐츠를 조회할 수 없습니다. 데이터 요금이 과다 청구될 수 있습니다.</string>
+  <!--Title of agreement users must accept to use the app-->
+  <string name="end_user_title">K-MOOC 이용약관</string>
+  <!--My Courses-->
+  <!--Row of course on dashboard screen-->
+  <string name="courseware_title">강좌</string>
+  <!--Row of course on dashboard screen-->
+  <!--NOTE: TODO - not final one-->
+  <string name="courseware_subtitle">동영상 및 과제 등을 학습합니다</string>
+  <!--Row of Discussion on dashboard screen-->
+  <string name="discussion_title">게시판</string>
+  <!--Row of Discussion on dashboard screen-->
+  <!--NOTE: TODO - not final one-->
+  <string name="discussion_subtitle">대화에 참여하세요</string>
+  <!--Row of Handouts on dashboard screen-->
+  <string name="handouts_title">학습자료</string>
+  <!--Row of Handouts on dashboard screen-->
+  <!--NOTE: TODO - not final one-->
+  <string name="handouts_subtitle">학습자료, 유인물 등의 정보가 있습니다</string>
+  <!--Row of announcement on dashboard screen-->
+  <string name="announcement_title">공지사항</string>
+  <!--Row of announcement on dashboard screen-->
+  <!--NOTE: TODO - not final one-->
+  <string name="announcement_subtitle">강좌의 최근 소식이 게시됩니다</string>
+  <!--Accessible content description of school code label a course-->
+  <string name="school_code">학교 코드</string>
+  <!--Accessible content description of course name label field-->
+  <string name="course_name">강좌명</string>
+  <!--Label indicating new course content has been downloaded-->
+  <string name="new_course_content">새 강좌 콘텐츠</string>
+  <!--Label for date when course starts-->
+  <string name="label_starting">시작일 - {date}</string>
+  <!--Label for course that has ended-->
+  <string name="label_ended">종료됨 - {date}</string>
+  <!--Label for date when course is ending-->
+  <string name="label_ending">{date} - 종료</string>
+  <!-- Title for the course filter menu popup -->
+  <string name="course_view_modes">강좌 목록 모드</string>
+  <!-- Label for the course filter menu popup option for filtering by videos only -->
+  <string name="course_view_mode_videos_only">동영상만 보기</string>
+  <!-- Label for the course filter menu popup option for displaying the full course -->
+  <string name="course_view_mode_full_course">전체 보기</string>
+  <!-- Label for the menu popup for viewing the course on the web -->
+  <string name="course_view_on_web">웹에서 보기</string>
+  <!--Course Details-->
+  <!--Accessible content description of label for course content-->
+  <string name="course_content">강좌 콘텐츠</string>
+  <!--Tab title for course handouts section-->
+  <string name="tab_label_handouts">학습자료</string>
+  <!--Button for last accessed course section. Will be followed by course name-->
+  <string name="last_accessed">최근 학습위치</string>
+  <!--Label shown when no courseware content is available-->
+  <string name="no_chapter_text">현재 강좌를 사용할 수 없습니다.</string>
+  <!--Label shown when user is enrolled in no courses-->
+  <string name="no_courses_to_display">아직 강좌에 등록하지 않았습니다.</string>
+  <!--Label shown when no announcements are available for a course-->
+  <string name="no_announcements_to_display">현재 이 강좌에 공지사항이 없습니다.</string>
+  <!--Label shown when no handouts are available for a course-->
+  <string name="no_handouts_to_display">현재 이 강좌에 유인물이 없습니다.</string>
+  <!--Discussion Topics-->
+  <!--Label for the discussion topics page-->
+  <string name="discussion_topics_title">게시판 주제</string>
+  <!--Hint displayed in search view for discussion posts-->
+  <string name="topics_search">모든 글 검색</string>
+  <!--Discussion Posts Fragment-->
+  <!--Title for discussion post search results-->
+  <string name="discussion_posts_search_title">검색 결과</string>
+  <!--Label for the the filter and sort options for refining the thread list-->
+  <string name="discussion_posts_refine">검색 조건:</string>
+  <!--Label for creating a new post-->
+  <string name="discussion_post_create_new_post">새 글 작성하기</string>
+  <!--Label for creating a new comment-->
+  <!--Discussion posts filter options-->
+  <!--Discussion posts filter for all posts-->
+  <string name="discussion_posts_filter_all_posts">전체 글</string>
+  <!--Discussion posts filter for unread posts-->
+  <string name="discussion_posts_filter_unread_posts">읽지 않음</string>
+  <!--Discussion posts filter for unanswered posts-->
+  <string name="discussion_posts_filter_unanswered_posts">답변 미완료</string>
+  <!--Discussion posts sort options-->
+  <!--Discussion posts sort by recent activity-->
+  <string name="discussion_posts_sort_recent_activity">최근 활동</string>
+  <!--Discussion posts sort by most activity-->
+  <string name="discussion_posts_sort_most_activity">가장 많은 활동</string>
+  <!--Discussion posts sort by most votes-->
+  <string name="discussion_posts_sort_most_votes">가장 많은 표</string>
+  <!--Label for the visibility of a discussion post that is only visible to cohort-->
+  <string name="discussion_post_visibility_cohort">이 글은 {cohort} 만 열람할 수 있습니다.</string>
+  <!--Label for the visibility of a discussion post that is visible to everyone-->
+  <string name="discussion_post_visibility_everyone">이 글은 전채 공개 상태입니다.</string>
+  <!--Used while constructing the author attribution text for a discussion post e.g. "3 days ago by Brian (Staff)"-->
+  <string name="discussion_post_author_attribution">{author} 가 작성</string>
+  <!--Used while constructing the author attribution text for an answer response e.g. "Marked as answer 2 days ago by Khalid (Community TA)"-->
+  <string name="discussion_post_marked_as_answer">답으로 표시됨</string>
+  <!--Used while constructing the author attribution text for an endorsed response e.g. "Endorsed 2 days ago by Khalid"-->
+  <string name="discussion_post_endorsed"></string>
+  <!--Used for putting authorLabel into parenthesis e.g. (Community TA) or (Staff)-->
+  <string name="discussion_post_author_label_attribution">({text})</string>
+  <!--Label indicating the number of replies on a post e.g. 47 total-->
+  <string name="discussion_post_total_replies">{total_replies} 계</string>
+  <!--Label indicating the last time a post was updated e.g. Last post: Jun 22, 2016-->
+  <string name="discussion_post_last_interaction_date">최신 글: {date}</string>
+  <!--Discussion Responses-->
+  <!--Label for question type discussions that are answered-->
+  <string name="course_discussion_answered_title">답이 작성된 질문</string>
+  <!--Label for question type discussions that are unanswered-->
+  <string name="course_discussion_unanswered_title">답변 미완료 질문</string>
+  <!--Label for adding a discussion response-->
+  <!--Label for number of discussion responses-->
+  <plurals name="number_responses_or_comments_responses_label">
+    <item quantity="other">%s 개 응답</item>
+  </plurals>
+  <!--Label for number of discussion comments-->
+  <plurals name="number_responses_or_comments_comments_label">
+    <item quantity="other">%s 개 댓글</item>
+  </plurals>
+  <!--Label for adding a new comment-->
+  <!--Label for indicating that a response is an answer-->
+  <string name="discussion_responses_answer">답</string>
+  <!--Label for indicating that a response is endorsed-->
+  <string name="discussion_responses_endorsed"></string>
+  <!--Label for time span when its less than a second after posting a response/comment-->
+  <string name="just_now">방금</string>
+  <!--Label for letting the user know his/her response was successfully added-->
+  <string name="discussion_response_posted">답변 작성이 완료되었습니다.</string>
+  <!--Label for letting the user know his/her comment was successfully added-->
+  <string name="discussion_comment_posted">댓글 작성이 완료되었습니다.</string>
+  <!--Discussion Responses Action Bar-->
+  <!--Label to indicate number of votes-->
+  <plurals name="discussion_responses_action_bar_vote_text">
+    <item quantity="other">{quantity} 표</item>
+  </plurals>
+  <!--Label to indicate discussion response is not marked as inappropriate-->
+  <string name="discussion_responses_report_label">보고</string>
+  <!--Label for discussion response that has been marked as inappropriate-->
+  <string name="discussion_responses_reported_label">보고 취소</string>
+  <!--Title in adding a new comment-->
+  <string name="discussion_add_comment_title">댓글 추가하기</string>
+  <!--Title when adding a new comment is disabled-->
+  <string name="discussion_add_comment_disabled_title">이 답변에는 댓글을 작성할 수 없습니다</string>
+  <!--Title in showing list of comments-->
+  <string name="discussion_comments">댓글</string>
+  <!--Add comment button title in adding a new comment-->
+  <string name="discussion_add_comment_button_label">댓글 추가하기</string>
+  <!--Add comment button description for accessibility in adding a new comment-->
+  <string name="discussion_add_comment_button_description">댓글 버튼 추가하기</string>
+  <!--Add your comment placeholder in adding a new comment-->
+  <!--Title in adding a new response-->
+  <string name="discussion_add_response_title">답변 추가하기</string>
+  <!--Title when adding a new response is disabled-->
+  <string name="discussion_add_response_disabled_title">이 글에는 답변을 작성할 수 없습니다</string>
+  <!--Add response button title in adding a new response-->
+  <string name="discussion_add_response_button_label">답변 추가하기</string>
+  <!--Add response button description for accessibility in adding a new response-->
+  <string name="discussion_add_response_button_description">답변 버튼 추가하기</string>
+  <!--Add your response placeholder in adding a new response-->
+  <!--Title placeholder in adding a new post-->
+  <string name="discussion_post_title">제목</string>
+  <!--Label for selected topic when creating a post-->
+  <string name="discussion_add_post_topic_selection">주제: {topic}</string>
+  <!--Add post button title in adding a new discussion-->
+  <string name="discussion_add_post_button_label">게시판에 글 추가하기</string>
+  <!--Add post button description for accessibility in adding a new discussion-->
+  <string name="discussion_add_post_button_description">게시판 글 추가 버튼</string>
+  <!--Add post button title in adding a new post-->
+  <string name="discussion_add_question_button_label">질문 글</string>
+  <!--Add post button content description for accessibility in adding a new post-->
+  <string name="discussion_add_question_button_description">질문 글 버튼</string>
+  <!--Add your post placeholder in adding a new post-->
+  <!--Add your post placeholder in adding a new post-->
+  <!--Question text in adding a new post-->
+  <string name="discussion_question">질문</string>
+  <!--Assessment-->
+  <!--Label showing next unit in a sub-section on assessment navigation bar-->
+  <string name="assessment_next">다음</string>
+  <!--Label showing previous unit in a sub-section on assessment navigation bar-->
+  <string name="assessment_previous">이전</string>
+  <!--Label showing assessment only available on website-->
+  <string name="assessment_not_available">이 상호작용 구성요소는 아직 앱에서는 지원이 안됩니다.</string>
+  <!--Label showing assessment only available on website-->
+  <string name="assessment_explore_on_web">강좌의 다른 부분을 보시거나 웹으로 이동하여 보실 수 있습니다.</string>
+  <!--Button to show wiew on web for assessment-->
+  <string name="assessment_view_on_web">웹에서 보기</string>
+  <!--Label to show empty assessment-->
+  <string name="assessment_empty">이 주제에 더이상 학습 자료가 존재하지 않습니다.</string>
+  <!--Label to show a course will be starting soon-->
+  <string name="assessment_soon">곧</string>
+  <!--Label to notify user to rotate device for viewing a video in full screen-->
+  <string name="assessment_rotate_for_fullscreen">전체 화면으로 보려면 기기를 돌려주세요.</string>
+  <!--Label showing only youtube is available-->
+  <string name="assessment_only_on_youtube">이 동영상은 유튜브에서만 재생됩니다.</string>
+  <!--Label for button to open on youtube-->
+  <string name="assessment_open_on_youtube">유튜브에서 동영상보기</string>
+  <!--Video List-->
+  <!--Label shown to indicate video currently downloading-->
+  <string name="started_downloading">다운로드 중</string>
+  <!--Title of video download screen-->
+  <string name="title_download">다운로드 목록</string>
+  <!--MyVideos-->
+  <!--Title of all videos section-->
+  <string name="my_all_videos">전체 동영상</string>
+  <!--Title of recent videos section-->
+  <string name="my_recent_videos">최근 동영상</string>
+  <!--Label indicating user has no Internet connection-->
+  <string name="offline_text">오프라인 모드</string>
+  <!--Label shown in videos section when user has no videos downloaded-->
+  <string name="no_videos_to_display">다운받은 동영상이 없습니다.</string>
+  <!--Cancel video download-->
+  <string name="cancel_download">다운로드 취소</string>
+  <!--My Downloads-->
+  <!--Button action label to view an item-->
+  <string name="view_button_text">학습하기</string>
+  <!--Error text when downloading an item fails-->
+  <string name="download_failed_text">다운로드 실패</string>
+  <!--Alert dialog title to confirm download of a large quantity of data-->
+  <string name="download_exceed_title">대용량 다운로드</string>
+  <!--Message shown a single video download begins-->
+  <string name="msg_started_one_video_download">동영상 1개 다운로드 중</string>
+  <!--When a video download is about to start and we don't know it's file size yet-->
+  <string name="download_pending">다운로드 대기중...</string>
+  <!--Error shown when video download fails-->
+  <string name="msg_video_not_downloaded">동영상을 다운로드할 수 없었습니다</string>
+  <!--Error shown when video download fails-->
+  <string name="msg_video_not_available">이 동영상은 현재 사용할 수 없습니다. 차후 다시 시도해 보세요.</string>
+  <!--Error shown when video has flag to indicate it is not available for mobile app-->
+  <string name="video_only_on_web_label">이 동영상은 웹상에 있습니다. 클릭하면 웹으로 전환됩니다.</string>
+  <!--Message to indicate the it is not available for mobile app-->
+  <string name="video_only_on_web_short">이 동영상은 현재 모바일 환경에서 사용할 수 없습니다.</string>
+  <!--Alert dialog title when login fails-->
+  <string name="login_error">로그인 오류</string>
+  <!--Alert dialog title when login fails due to lack of Internet-->
+  <string name="no_connectivity">연결 오류</string>
+  <!--Wifi New Message-->
+  <!--Toggle to allow downloads using cellular data-->
+  <string name="allow">허용</string>
+  <!--Toggle to disallow downloads using cellular data-->
+  <string name="do_not_allow">허용하지 않음</string>
+  <!--Player Settings-->
+  <!--Label for closed captions in video player-->
+  <string name="lbl_closed_caption">자막</string>
+  <!--Label for no closed captions selected-->
+  <string name="lbl_cc_cancel">없음</string>
+  <!--Accessibility Label for Video Player-->
+  <string name="video_player">동영상 플레이어</string>
+  <!--Accessibility Label for View on Web button on Video Player top bar-->
+  <string name="video_player_view_on_web">웹에서 보기</string>
+  <!--Accessibility Label for Play button of Video Player-->
+  <string name="video_player_play">재생</string>
+  <!--Accessibility Label for Pause button of Video Player-->
+  <string name="video_player_next">다음</string>
+  <!--Accessibility Label for Previous button of Video Player-->
+  <string name="video_player_previous">이전</string>
+  <!--Accessibility Label for Pause button of Video Player-->
+  <string name="video_player_pause">정지</string>
+  <!--Accessibility Label for Rewind button on Video Player bottom bar-->
+  <string name="video_player_rewind">30초 뒤로감기</string>
+  <!--Accessibility Label for Settings button on Video Player bottom bar-->
+  <string name="video_player_settings">설정</string>
+  <!--Accessibility Label for Entering Fullscreen button on Video Player bottom bar-->
+  <string name="video_player_enter_fullscreen">전체화면으로 보기</string>
+  <!--Accessibility Label for Exiting Fullscreen button on Video Player bottom bar-->
+  <string name="video_player_exit_fullscreen">전체화면 취소</string>
+  <!--Button label to bring up course finder-->
+  <string name="find_course_text">새로운 강좌를 학습하고 싶으십니까?</string>
+  <!--Button label to bring up course finder-->
+  <string name="find_course_btn_text">강좌 검색하기</string>
+  <!--Message between sign in button and social login buttons-->
+  <string name="or_sign_in_with">또는 다음을 통해 로그인하세요</string>
+  <!--Facebook login method-->
+  <string name="facebook_text">페이스북</string>
+  <!--Google login method-->
+  <string name="google_text">구글</string>
+  <!--Message on course list-->
+  <string name="course_not_listed_text">강좌를 찾을 수 없으십니까?</string>
+  <!--Accessible content description of course not listed button on Course list screen-->
+  <string name="course_not_listed_btn">강좌 버튼 중 하나를 찾을 수 없습니다</string>
+  <!--Title of find course screen-->
+  <string name="find_courses_title">강좌 목록</string>
+  <!--Message shown when attempting to find courses with no Internet connection-->
+  <string name="find_courses_offline_text">오프라인 모드입니다.\n 강좌검색을 위해서는 인터넷을 연결하세요.</string>
+  <!--Prompt allowing user to choose email program-->
+  <string name="email_chooser_header">...을 통해 이메일을 발송하세요</string>
+  <!--Error shown when user attempts to send email, but has no email app-->
+  <string name="email_client_not_present">이메일 클라이언트가 설치되지 않았습니다</string>
+  <!--Search for a course prompt-->
+  <string name="search_for_courses">...에 대해 배우고 싶습니다</string>
+  <!--Landing Activity text-->
+  <!--Prompt leading user to sign in screen-->
+  <string name="already_have_an_account">로그인</string>
+  <!--Prompt leading user to create account screen-->
+  <string name="sign_up_and_learn">회원가입</string>
+  <!--In Register screen-->
+  <string name="register_with">다음을 통해 등록하세요</string>
+  <string name="or_register_with_email">혹인 이메일을 통해 등록하세요</string>
+  <!--New Logistration Launch screen text-->
+  <!--Button leading user to create account screen-->
+  <string name="launch_register">등록</string>
+  <!--Button leading user to Find Courses screen from the launch screen-->
+  <string name="launch_discover_courses">강좌 검색</string>
+  <!--Button leading user to Find Courses screen from the launch screen-->
+  <string name="launch_explore_subjects">주제 탐색</string>
+  <!--Registration Screen-->
+  <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
+  <string name="by_creating_account">계정을 생성함으로서 다음에 동의하게 됩니다</string>
+  <!--Button text allowing user to show hidden optional registration fields-->
+  <string name="show_optional_text">선택사항 입력창 열기</string>
+  <!--Button text allowing user to hide visible optional registration fields-->
+  <string name="hide_optional_text">선택사항 입력창 닫기</string>
+  <!--Button text allowing user create an account-->
+  <string name="create_account_text">계정 생성하기</string>
+  <!--Accessible content description of create account button on Registration screen-->
+  <string name="create_account_btn">계정 생성 버튼 추가하기</string>
+  <!--Text shown while waiting for registration request-->
+  <string name="creating_account_text">계정 생성...</string>
+  <!--Registration screen title-->
+  <string name="register_title">등록</string>
+  <!--Text for successful registration with social token-->
+  <string name="sign_up_with_facebook_ok">페이스북을 통해 로그인 하였습니다.</string>
+  <string name="sign_up_with_google_ok">구글을 통해 로그인 하였습니다.</string>
+  <string name="sign_up_with_social_ok">{platform_name} 을 시작하기 전에 약간의 추가 정보가 필요합니다.</string>
+  <!--Continue registration after social login-->
+  <string name="complete_registration">등록 완료하기</string>
+  <!--Message shown when enrolling in a course fails-->
+  <string name="enrollment_failure">현재 이 강좌에 등록할 수 없습니다</string>
+  <!--Alert dialog button allowing user to repeat their attempted action-->
+  <string name="try_again">재시도</string>
+  <!--Registration error-->
+  <string name="registration_error_title">등록 오류</string>
+  <string name="registration_error_message">표시된 입력창을 확인하고 다시 시도해 보세요.</string>
+  <!--data charges may apply dialog text-->
+  <!--Alert dialog title shown for users whose in app data is zero rated, when they follow a link outside the app-->
+  <string name="open_external_url_title">데이터 요금이 청구될 수 있습니다</string>
+  <!--Alert dialog content shown for users whose in app data is zero rated, when they follow a link outside the app-->
+  <string name="open_external_url_desc">이 링크에 접속하면 모바일 브라우저가 열리며 추가 데이터 요금이 청구될 수 있습니다.</string>
+  <string name="android">안드로이드</string>
+  <!--Email subject line when user attempts to submit feedback about the app-->
+  <string name="email_subject">사용자 피드백</string>
+  <!--Submit Feedback app version text-->
+  <string name="app_version">ver:</string>
+  <!--Submit Feedback android version text-->
+  <string name="android_os_version">안드로이드 OS:</string>
+  <!--Submit Feedback android model text-->
+  <string name="android_device_model">사용중인 모델:</string>
+  <!--Submit Feedback feedback text-->
+  <string name="insert_feedback">문의 내용:\n\n\n\n\n ※오류에 대한 문의의 경우, 해당 오류가 발생한 위치 및 내용과 함께 스크린샷을 첨부해주시면 보다 정확한 답변을 받으실 수 있습니다.</string>
+  <!--Message indicating num of video deleted. {video_count} is a number of videos deleted, like "3".-->
+  <plurals name="deleted_video">
+    <item quantity="other">{video_count} 동영상이 삭제되었습니다</item>
+  </plurals>
+  <!--Notification related-->
+  <!--toggle between subscribe and unsubscribe to course announcement-->
+  <string name="notification_toggle">알림 허용</string>
+  <!--Placeholder title for course content with no title-->
+  <string name="untitled_block">제목 없음</string>
+  <!--Discussion/Forum-->
+  <string name="forum_no_results_for_search_query">“{search_query}” 에 대한 결과를 찾을 수 없었습니다. 다른 키워드로 검색하거나 게시판을 검색해보세요.</string>
+  <string name="forum_no_results_for_all_posts">이 강좌 게시판에 글이 없습니다.</string>
+  <string name="forum_no_results_for_following">현재 글을 팔로우하고 있지 않습니다.</string>
+  <string name="forum_no_results_for_filtered_following">필터 결과가 팔로우 중인 글을 포함하지 않습니다.</string>
+  <string name="forum_no_results_in_category">이 게시판 카테고리에 글이 없습니다.</string>
+  <string name="forum_no_results_with_filter">글 필터를 제거해보세요.</string>
+  <string name="forum_post_i_am_following">현재 팔로우 중인 글</string>
+  <string name="forum_follow">팔로우</string>
+  <string name="forum_unfollow">언팔로우</string>
+  <!--User Profiles-->
+  <!--Window title for the user profile screen-->
+  <string name="profile_title">프로필</string>
+  <!--The accessibility description for the username section-->
+  <string name="profile_username_description">사용자 이름: {username}</string>
+  <!--The accessibility description for the language section-->
+  <string name="profile_language_description">언어: {language}</string>
+  <!--The accessibility description for the location section-->
+  <string name="profile_location_description">위치: {location}</string>
+  <!--The accessibility description for the "About Me" section-->
+  <string name="profile_about_me_description">자기 소개: {about_me}</string>
+  <!--Label for toolbar icon that launches the edit profile screen for the current user-->
+  <string name="profile_toolbar_edit_button">편집</string>
+  <!--Shown when viewing your own profile and you are not sharing a full profile-->
+  <string name="profile_sharing_limited_by_you">현재 제한 프로필을 공유하고 있습니다</string>
+  <!--Shown when viewing another user's profile and that user is not sharing a full profile-->
+  <string name="profile_sharing_limited_by_other_user">이 사용자는 현재 제한 프로필을 공유하고 있습니다</string>
+  <!--Shown when viewing your own profile until you have confirmed you are over the age of consent (13 years old)-->
+  <string name="profile_consent_needed_explanation">13세 이상이 되어야 전체 프로필을 공유할 수 있습니다.</string>
+  <!--Shown as button below the explanation for age of consent; it launches the edit profile screen-->
+  <string name="profile_consent_needed_edit_button">계정 설정</string>
+  <!--Shown when viewing your own incomplete profile-->
+  <string name="profile_incomplete_explanation">현재 프로필 작성이 완료되지 않았습니다. 지금 시작해 보세요.</string>
+  <!--Shown as button below the explanation for incomplete profile; it launches the edit profile screen-->
+  <string name="profile_incomplete_edit_button">시작하기</string>
+  <!--This text is shown in place of the "About Me" text if the user has not filled in their "About Me"-->
+  <string name="profile_incomplete_about_me">“자기소개” 정보가 없습니다.</string>
+  <!--Window title for edit profile screen-->
+  <string name="edit_user_profile_title">프로필 편집</string>
+  <!--How most profile fields are formatted when viewing the edit screen-->
+  <string name="edit_user_profile_field">{label}: {value}</string>
+  <!--Default placeholder if a profile field is blank-->
+  <string name="edit_user_profile_field_placeholder">선택</string>
+  <!--Button that saves changes to a profile text field-->
+  <string name="edit_user_profile_textarea_submit_button">제출</string>
+  <!--An option that will set the user profile's primary language to the language of their device's configured locale-->
+  <string name="edit_user_profile_current_language">현재 언어: {current_language}</string>
+  <!--An option that will set the user profile's location to the country of their device's configured locale-->
+  <string name="edit_user_profile_current_location">현재 위치: {current_location}</string>
+  <!--Button label that will open gallery or camera for choosing new profile photo-->
+  <string name="edit_user_profile_change_photo">변경</string>
+  <!--Content Description for change photo button-->
+  <string name="edit_user_profile_change_photo_description">프로필 사진 변경</string>
+  <!--Button that will open a camera for taking a new profile photo-->
+  <string name="edit_user_profile_take_photo">사진 촬영</string>
+  <!--Button that will open photo gallery for choosing a new profile photo-->
+  <string name="edit_user_profile_choose_photo">사진 선택</string>
+  <!--Button that will open a camera for taking a new profile photo-->
+  <string name="edit_user_profile_remove_photo">사진 제거</string>
+  <!--Title when cropping newly selected profile photo-->
+  <string name="edit_user_profile_photo_crop_title">잘라내기 및 크기 조절</string>
+  <!--Button that will exit the crop tool without saving the image-->
+  <string name="edit_user_profile_photo_crop_cancel">취소</string>
+  <!--Button that will confirm the crop region and continue to upload the cropped photo-->
+  <string name="edit_user_profile_photo_crop_save">선택</string>
+  <!--Tab title for section of profile that displays a user's bio-->
+  <string name="profile_tab_bio">관하여</string>
+  <!--Tab title for section of profile that lists a user's accomplishments-->
+  <string name="profile_tab_accomplishment">달성한 성과</string>
+  <!--Button that will initiate sharing one of a user's accomplishments-->
+  <string name="share_accomplishment_button">달성한 성과를 공유하세요</string>
+  <!--Text that pre-populates your post/email/SMS when sharing certificate-->
+  <string name="share_accomplishment_message">{platform_name} 에서 방금 배지를 받았습니다! 확인해 보세요: {badge_url}</string>
+</resources>

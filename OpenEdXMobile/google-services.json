@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "285210390101",
+    "firebase_url": "https://k-mooc-96316.firebaseio.com",
+    "project_id": "k-mooc-96316",
+    "storage_bucket": "k-mooc-96316.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285210390101:android:f59be8f1053427b5",
+        "android_client_info": {
+          "package_name": "com.nile.kmooc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285210390101-o68q7rp38fc0mfug5e9g7lvtiibb57ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI5CeYFdijwLHslsz-gIRLfRuslHYyk3U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
